@@ -26,7 +26,11 @@ uvicorn main:app --host 0.0.0.0 --port 8080
 
 ```bash
 
-curl -X POST http://127.0.0.1:8080/predict?input_='123' -d {"id":91587,"building_id":10448,"floor":6,"kitchen_area":5.8,"living_area":43.0,"rooms":3,"is_apartment":"false","studio":"false","total_area":58.2,"build_year":1973,"building_type_int":4,"latitude":55.7171363831,"longitude":37.4607810974,"ceiling_height":2.4800000191,"flats_count":143,"floors_total":9,"has_elevator":"true"}
+curl -X POST "http://localhost:8080/predict/123" \
+     -H "Content-Type: application/json" \
+     -d '{"id":91587,"building_id":10448,"floor":6,"kitchen_area":5.8,"living_area":43.0,"rooms":3,"is_apartment":"false","studio":"false","total_area":58.2,"build_year":1973,"building_type_int":4,"latitude":55.7171363831,"longitude":37.4607810974,"ceiling_height":2.4800000191,"flats_count":143,"floors_total":9,"has_elevator":"true"}'
+
+
 ```
 
 

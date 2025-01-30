@@ -1,0 +1,6 @@
+fastapi
+xgboost
+scikit-learn==1.4.0
+autofeat
+pandas
+"uvicorn[standard]" 

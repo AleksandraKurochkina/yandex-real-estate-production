@@ -16,9 +16,9 @@ pip3 install -r requirements.txt
 
 
 # команда перехода в директорию
-cd services/ml_service/
+cd services
 # команда запуска сервиса с помощью uvicorn
-uvicorn main:app --host 0.0.0.0 --port 8080
+uvicorn ml_service.main:app --host 0.0.0.0 --port 8080
 
 ```
 
@@ -38,15 +38,19 @@ curl -X POST "http://localhost:8080/predict/123" \
 
 ```bash
 # команда перехода в нужную директорию
+cd services
 
-# команда для запуска микросервиса в режиме docker compose
+docker build -t my_app -f Dockerfile_ml_service .
+docker container run --publish 4600:1702 --env-file .env --volume=./models:/services/models  my_app
+
 ```
 
 ### Пример curl-запроса к микросервису
 
 ```bash
-curl -X 'POST' \
-  'http://localhost:...' \
+curl -X POST "http://localhost:4600/predict/123" \
+     -H "Content-Type: application/json" \
+     -d '{"id":91587,"building_id":10448,"floor":6,"kitchen_area":5.8,"living_area":43.0,"rooms":3,"is_apartment":"false","studio":"false","total_area":58.2,"build_year":1973,"building_type_int":4,"latitude":55.7171363831,"longitude":37.4607810974,"ceiling_height":2.4800000191,"flats_count":143,"floors_total":9,"has_elevator":"true"}'
 ```
 
 ## 3. Docker compose для микросервиса и системы моониторинга

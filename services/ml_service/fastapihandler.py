@@ -1,5 +1,6 @@
 import joblib
 import pandas as pd
+import os
 
 class FastApiHandler:
     
@@ -15,8 +16,8 @@ class FastApiHandler:
                                       'build_year', 'building_type_int',
                                       'latitude', 'longitude', 'ceiling_height',
                                       'flats_count', 'floors_total', 'has_elevator']
-        
-        model_path = "/home/mle-user/mle_projects/mle-project-sprint-3-v001/services/models/pipeline.pkl"
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(current_dir, "..", "models", "pipeline.pkl")
         self.load_model(model_path=model_path)
 
     def load_model(self, model_path: str):

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapihandler import FastApiHandler
+from ml_service.fastapihandler import FastApiHandler
 
 app = FastAPI()
 app.handler = FastApiHandler()

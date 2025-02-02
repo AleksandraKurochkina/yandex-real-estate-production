@@ -57,8 +57,21 @@ curl -X POST "http://localhost:4600/predict/123" \
 
 ```bash
 # команда перехода в нужную директорию
-
+cd services
 # команда для запуска микросервиса в режиме docker compose
+docker compose up --build
+
+#yandex_app address
+localhost:4600
+
+#prometeus address
+localhost:9090
+
+#метрики
+localhost:4600/metrics
+
+#grafana address:
+localhost:3000
 
 ```
 

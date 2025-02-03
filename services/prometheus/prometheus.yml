@@ -17,4 +17,4 @@ scrape_configs:
     static_configs:
     - targets:
       # указывается адресс микросервиса
-      - yandex_app:4600
+      - my_app:1702

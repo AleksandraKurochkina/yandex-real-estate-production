@@ -41,14 +41,14 @@ curl -X POST "http://localhost:8080/predict/123" \
 cd services
 
 docker build -t my_app -f Dockerfile_ml_service .
-docker container run --publish 4600:1702 --env-file .env --volume=./models:/services/models  my_app
+docker container run --publish 1702:1702 --env-file .env --volume=./models:/services/models  my_app
 
 ```
 
 ### Пример curl-запроса к микросервису
 
 ```bash
-curl -X POST "http://localhost:4600/predict/123" \
+curl -X POST "http://localhost:1702/predict/123" \
      -H "Content-Type: application/json" \
      -d '{"id":91587,"building_id":10448,"floor":6,"kitchen_area":5.8,"living_area":43.0,"rooms":3,"is_apartment":"false","studio":"false","total_area":58.2,"build_year":1973,"building_type_int":4,"latitude":55.7171363831,"longitude":37.4607810974,"ceiling_height":2.4800000191,"flats_count":143,"floors_total":9,"has_elevator":"true"}'
 ```
@@ -62,13 +62,13 @@ cd services
 docker compose up --build
 
 #yandex_app address
-localhost:4600
+localhost:1702
 
 #prometeus address
 localhost:9090
 
 #метрики
-localhost:4600/metrics
+localhost:1702/metrics
 
 #grafana address:
 localhost:3000
@@ -83,14 +83,21 @@ curl -X 'POST' \
 ```
 
 ## 4. Скрипт симуляции нагрузки
-Скрипт генерирует <...> запросов в течение <...> секунд ...
+Скрипт генерирует 5 запросов. По запросу раз в 10 секунд 
 
 ```
 # команды необходимые для запуска скрипта
-...
+python test_requests.py
 ```
 
 Адреса сервисов:
-- микросервис: http://localhost:<port>
-- Prometheus: ...
-- Grafana: ...
+- микросервис: http://localhost:1702
+- Prometheus: http://localhost:9000
+- Grafana: http://localhost:3000
+
+Выбранные метрики:
+     1. Количество предсказаний выше среднего по выборке обучения - 11000000
+Поможет нам увидеть, если модель начнет завышать оценки или наоборот занижать
+     2. Доля обработанных запросов, поможет увидеть есть ли какие-то проблемы с доступностью сервиса
+     3. Количество предсказаний по бакетам. Помогает оценить рынок цен плюс отслеживать есть ли изменения в работе модели.
+     4. Средняя цена с течением времени. Помогает отслеживать работу модели.

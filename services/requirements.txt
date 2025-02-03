@@ -4,4 +4,5 @@ xgboost
 scikit-learn==1.4.
 autofeat
 pandas
-uvicorn==0.29.0 
+uvicorn==0.29.0
+requests 

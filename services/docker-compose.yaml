@@ -7,12 +7,12 @@ services:
       dockerfile: Dockerfile_ml_service
 
     ports:
-      - "${APP_PORT_VM}:${APP_PORT}"
+      - "${APP_PORT}:${APP_PORT}"
     volumes:
       - type: bind
         source: ./models
         target: /services/models
-    hostname: yandex_app
+    hostname: my_app
 
   prometheus:
     image: prom/prometheus

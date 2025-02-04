@@ -19,7 +19,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
-      - 9090:9090
+      - "${PROM_PORT}:${PROM_PORT}"
     volumes:
       - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
     hostname: prometheus 
@@ -29,7 +29,7 @@ services:
     env_file:
       - ./.env
     ports:
-      - 3000:3000
+      - "${GRAF_PORT}:${GRAF_PORT}"
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASS}

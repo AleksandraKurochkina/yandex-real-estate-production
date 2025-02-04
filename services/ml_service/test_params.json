@@ -1,0 +1,26 @@
+{
+    "test_params" : 
+    {
+        "user_id": "123", 
+        "model_params": 
+        {
+            "id": 91587,
+            "building_id": 10448,
+            "floor": 6, 
+            "kitchen_area": 5.8,
+            "living_area": 43.0,
+            "rooms": 3, 
+            "is_apartment": "false",
+            "studio": "false", 
+            "total_area": 58.2,
+            "build_year": 1973,
+            "building_type_int": 4,
+            "latitude": 55.71713638305664, 
+            "longitude": 37.46078109741211, 
+            "ceiling_height": 2.4800000190734863,
+            "flats_count": 143,
+            "floors_total": 9,
+            "has_elevator": "true"
+        }
+    }
+}

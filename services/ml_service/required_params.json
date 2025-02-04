@@ -1,0 +1,6 @@
+{
+    "params": ["id", "building_id", "floor", "kitchen_area", "living_area",
+     "rooms", "is_apartment", "studio", "total_area", "build_year", 
+     "building_type_int", "latitude", "longitude", "ceiling_height",
+     "flats_count", "floors_total", "has_elevator"]
+}
